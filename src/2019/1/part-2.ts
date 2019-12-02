@@ -10,20 +10,22 @@ const moduleData = fs
   .readFileSync(__dirname + "/input.txt", "utf-8")
   .split("\n");
 
-const recursively = (input: number): number => {
+export const calculateMassRecursively = (input: number): number => {
   const requiredFuel = fuelFromMass(input);
   if (requiredFuel >= 0) {
-    return requiredFuel + recursively(requiredFuel);
+    return requiredFuel + calculateMassRecursively(requiredFuel);
   } else {
     return 0;
   }
 };
 
-const calculateLaunchMass = () =>
-  moduleData.reduce((agg, item) => agg + recursively(Number(item)), 0);
+export const calculateLaunchMass = () =>
+  moduleData.reduce(
+    (agg, item) => agg + calculateMassRecursively(Number(item)),
+    0
+  );
 
-console.log(calculateLaunchMass());
-
-console.log("14", recursively(14));
-console.log("1969", recursively(1969));
-console.log("100756", recursively(100756));
+/*console.log(calculateLaunchMass());
+console.log("14", calculateMassRecursively(14));
+console.log("1969", calculateMassRecursively(1969));
+console.log("100756", calculateMassRecursively(100756));*/
