@@ -1,6 +1,6 @@
 import { calculateMassRecursively, calculateLaunchMass } from "./part-2";
 
-describe("AOC day-1 part-1", () => {
+describe("AOC day-1 part-2", () => {
   describe("calculateMassRecursively()", () => {
     it("returns the expected value", () => {
       expect(calculateMassRecursively(14)).toBe(2);
